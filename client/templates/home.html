@@ -1,0 +1,63 @@
+<template name="home">
+  <div class="form">
+    <div class="form-description">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in ante semper, ultrices eros vel, interdum nisl. Vestibulum id nunc in enim mattis viverra vel hendrerit justo. Morbi pulvinar non ante a iaculis. Phasellus eu tellus hendrerit, placerat arcu et, dapibus elit. Curabitur quis lorem quis odio convallis egestas quis at elit. Nunc eu interdum felis. Duis nec ligula cursus, tempor diam eget, tristique lacus. Integer condimentum, dolor nec luctus hendrerit, dolor lacus scelerisque turpis, nec fringilla sem ante eget massa.
+    </div>
+
+    <div class="form-element medication-name">
+      <div class="form-element-title">
+        1. Medication Name
+      </div>
+      <hr />
+      <div class="form-element-content">
+        <input type="text" placeholder="Enter medication name and hit enter..." />
+      </div>
+    </div>
+
+    <div class="form-element patient-id">
+      <div class="form-element-title">
+        2. Patient IDs Associated with Entered Medication
+      </div>
+      <hr />
+      <div class="form-element-content scrollable-content">
+        <table class="form-table">
+          {{#each patient_ids}}
+            <tr class="form-table-row">
+              <td class="form-table-cell">
+                {{this}}
+              </td>
+            </tr>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+
+    <div class="form-element waveform-id">
+      <div class="form-element-title">
+        3. Waveform IDs For Selected Patient
+      </div>
+      <hr />
+      <div class="form-element-content scrollable-content">
+        <table class="form-table">
+          {{#each waveform_ids}}
+            <tr class="form-table-row">
+              <td class="form-table-cell">
+                {{this}}
+              </td>
+            </tr>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+
+    <div class="form-element waveform-image">
+      <div class="form-element-title">
+        4. Waveform Display
+      </div>
+      <hr />
+      <div class="form-element-content">
+        <img src="media/images/{{ waveform_image_url }}" />
+      </div>
+    </div>
+  </div>
+</template>
