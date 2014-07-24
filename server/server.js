@@ -1,6 +1,8 @@
 var fs, exec;
+
 var writeReadDirectory = "/Users/sherwin/mimicapp/file_io/";
 var publicImagesDirectory = "/Users/sherwin/mimicapp/public/media/images/";
+
 var medicationsFileName = "step1-put-medicine.tsv";
 var listOfPatientsFileName = "step2-get-listofpatients.tsv";
 var patientIDFileName = "step3-put-selectedpatient.tsv";
@@ -37,10 +39,10 @@ Meteor.methods({
     fs.writeFileSync(filePath, fileContents);
 
     // TODO: call the matlab script
+    // At this point, step1 has been written and is waiting on step2.
     // exec("matlab --nodisplay matlab_script_name", function(err, stdout, sterr) {});
 
     var patientIDs = readTSV(writeReadDirectory + listOfPatientsFileName);
-
     return patientIDs;
   },
 
@@ -51,6 +53,7 @@ Meteor.methods({
     fs.writeFileSync(filePath, fileContents);
 
     // TODO: call the matlab script
+    // At this point, step3 has been written and is waiting on step4.
     // exec("matlab --nodisplay matlab_script_name", function(err, stdout, sterr) {});
 
     var waveformIDs = readTSV(writeReadDirectory + listOfWaveformsFileName);
@@ -64,6 +67,8 @@ Meteor.methods({
     fs.writeFileSync(filePath, fileContents);
 
     // TODO: call the matlab script
+    // At this point, step5 has been written and is waiting for the name of the
+    // image in the public/images folder.
     // exec("matlab --nodisplay matlab_script_name", function(err, stdout, sterr) {});
 
     var waveformImageURL = "output.jpg";
